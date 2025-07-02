@@ -1,0 +1,43 @@
+# ============================================
+# Basic clang-format config for C++ projects
+# ============================================
+
+# Style dasar: LLVM / Google / WebKit / Chromium / Mozilla
+# LLVM = K&R brace style (attach to function)
+BasedOnStyle: LLVM
+
+# Lebar indentasi
+IndentWidth: 4
+
+# Indentasi untuk case di switch
+IndentCaseLabels: true
+
+# Panjang baris maksimal sebelum di-break (0 = unlimited)
+ColumnLimit: 120
+
+# Brace di baris fungsi
+BreakBeforeBraces: Attach
+
+# Spasi di dalam array brackets => [1, 2, 3]
+SpacesInSquareBrackets: false
+
+# Spasi sebelum & sesudah tanda :
+SpaceAfterCStyleCast: false
+
+# Keep simple blocks on same line jika pendek
+AllowShortIfStatementsOnASingleLine: true
+AllowShortFunctionsOnASingleLine: InlineOnly
+AllowShortLoopsOnASingleLine: true
+
+# Tambah newline di akhir file
+InsertTrailingNewline: true
+
+# Sort include statements
+SortIncludes: true
+
+# Penanganan pointer & reference
+PointerAlignment: Right
+DerivePointerAlignment: false
+
+# Atur spasi sebelum parameter pointer
+SpaceBeforeParens: ControlStatements
