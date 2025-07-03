@@ -13,7 +13,7 @@ void check_pattern(A &cantik, char c);
 int main() {
     string S;
     cin >> S;
-    cout << string_cantik(S);
+    cout << string_cantik(S) << endl;
 
     return 0;
 }
