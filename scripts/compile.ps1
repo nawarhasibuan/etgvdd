@@ -41,16 +41,28 @@ if (-not (Test-Path $OutDir)) {
     New-Item -ItemType Directory -Path $OutDir -Force | Out-Null
 }
 
-# --------- Compile ----------
-Write-Host "Compiling..."
-$cmd = "g++ -O2 -std=c++17 -o `"$ExeFile`" `"$SourceFile`""
+# --------- Cek butuh compile atau tidak ----------
+$compileNeeded = $true
 
-Write-Host "> $cmd"
-Invoke-Expression $cmd
+if (Test-Path $ExeFile) {
+    $sourceTime = (Get-Item $SourceFile).LastWriteTime
+    $exeTime = (Get-Item $ExeFile).LastWriteTime
 
-if ($LASTEXITCODE -ne 0) {
-    Write-Host "Compile failed!"
-    exit 1
+    if ($exeTime -gt $sourceTime) {
+        $compileNeeded = $false
+    }
 }
 
-Write-Host "Compile success: $ExeFile"
+if ($compileNeeded) {
+    $cmd = "g++ -O2 -std=c++17 -o `"$ExeFile`" `"$SourceFile`""
+    Write-Host "> $cmd"
+
+    Invoke-Expression $cmd
+
+    if ($LASTEXITCODE -ne 0) {
+        Write-Host "Compile failed!"
+        exit 1
+    }
+
+    Write-Host "Compile success: $ExeFile"
+}

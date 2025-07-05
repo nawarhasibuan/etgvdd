@@ -17,11 +17,6 @@ if (-not (Test-Path $TargetScript)) {
     exit 1
 }
 
-Write-Host "Menjalankan: $TargetScript"
-if ($ScriptArgs) {
-    Write-Host "Dengan argumen: $ScriptArgs"
-}
-
 # Build command line
 $argStr = $ScriptArgs -join ' '
 
