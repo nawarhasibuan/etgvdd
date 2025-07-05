@@ -62,12 +62,12 @@ int main() {
         }
         sort(c.begin(), c.end());
     }
+
     long long score = 0;
     for (auto &c : C) {
-
         score += unsatisfied(c, G);
     }
-    cout << "score: " << score << endl;
+    cout << score << endl;
 
     return 0;
 }
@@ -94,15 +94,19 @@ vector<vector<int>> groups(const vector<pair<int, int>> &E, int N) {
     return dsu.get_groups();
 }
 long long unsatisfied(const vector<int> &c, const vector<int> &G) {
-    int med = c[c.size() / 2];
-    auto itr = find_if(G.begin(), G.end(), [&](int a) { return a >= med; });
-    auto itr_before = itr - 1;
-    long long tolerance = 0;
-    long long tolerance_before = 0;
-    for (auto cx : c) {
-        tolerance += abs(cx - *itr);
-        tolerance_before += abs(cx - *itr_before);
+    int s_val = c.at((c.size() - 1) / 2);
+    auto pos = lower_bound(G.begin(), G.end(), s_val);
+    int gula1 = (pos != G.end()) ? *pos : *(pos - 1);
+
+    long long tolerance1 = 0, tolerance2 = 0;
+    for (auto c_level : c) tolerance1 += abs(c_level - gula1);
+    long long tolerance = tolerance1;
+
+    if (pos != G.begin()) {
+        int gula2 = *(pos - 1);
+        for (auto c_level : c) tolerance2 += abs(c_level - gula2);
+        tolerance = min(tolerance1, tolerance2);
     }
 
-    return tolerance < tolerance_before ? tolerance : tolerance_before;
+    return tolerance;
 }
