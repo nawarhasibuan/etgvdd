@@ -6,6 +6,7 @@ Repo ini berisi kumpulan solusi soal-soal kompetisi CP yang ditulis dalam bahasa
 
 - `src/templates/` - Template kode C++ yang sering digunakan
 - `src/contests/` - Solusi dari berbagai platform (AtCoder, Codeforces, CSES, local contest)
+- `tests/` - input dan expected output
 - `notes/` - Catatan, snippet, dan referensi pribadi
 - `bin/`- Hidden folder tempat executable file
 
@@ -22,14 +23,29 @@ Atau jika tidak ada input file:
 ./bin/A
 ```
 
-Atau jika menggunakan windows
+Menggunakan script yang tersedia di repo ini
 
 ```bash
-./compile.bat
+./cp <command> <option>
 ```
 
-Executable file dengan perintah ini terletak pada folder `bin/` dengan format
-hasil kompilasi `src/a/b/c/d.cpp` berada di `bin/a/b/c/d.exe`
+Daftar command/perintah yang tersedia
+
+- `compile` untuk kompilasi satu file
+- `build` untuk kompilasi semua file \*.cpp yang belum di kompilasi atau ada perubahan
+- `clean` untuk membersihkan executable file di folder`bin/`
+- `run` untuk menjalankan hasil kompilasi satu program
+- `grader` untuk mencocokkan output program dengan expected output yang ada di folder expected
+
+command `compile`, `run`, dan `grader` harus disertai `<option>` format yang sesuai dengan tempat penyimpanan program. Pastikan file `input` tersedia untuk command `run`, dan `input` dan `expected` untuk comman `grader`
+
+`<contest>/<problemset>/<problem>`. contoh `osn/osp2025/A`
+
+Contoh penggunaan
+
+```bash
+./cp grader osn/osp2025/A
+```
 
 ## Code Format
 
