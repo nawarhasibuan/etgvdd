@@ -1,0 +1,82 @@
+
+{
+	"Input Output Template": {
+		"prefix": "maincp",
+		"body": [
+			"#include <iostream>",
+			"",
+			"using namespace std;",
+			"",
+			"int main() {",
+			"    // input",
+			"$0",
+			"",
+			"    // algoritma",
+			"",
+			"    // output",
+			"",
+			"    cout << 0 << endl;",
+			"",
+			"    return 0;",
+			"}",
+			"",
+		],
+		"description": "Template main input-output untuk CP"
+	},
+	"Input Vector": {
+		"prefix": "invec",
+		"body": [
+			"vector<${1:int}> ${2:var}(${3:size});",
+			"for (int i = 0; i < $3; i++) {",
+			"    cin >> $2[i];",
+			"}",
+			"$0",
+		],
+		"description": "buat variable vector dan diisi",
+	},
+	"input graph edge": {
+		"prefix": "edgelist",
+		"body": [
+			"vector<pair<${3:int}, $3}>> ${1:edge};",
+			"for (int i = 0; i < ${2:size}; i++) {",
+			"    $3 u, v;",
+			"    cin >> u >> v;",
+			"    $1.push_back({u, v});",
+			"}",
+			"$0",
+		],
+		"description": "input edge dari graph",
+	},
+	"input adj list graph": {
+		"prefix": "adjlist",
+		"body": [
+			"vector<vector<${3:int}>> ${1:edge};",
+			"for (int i = 0; i < ${2:size}; i++) {",
+			"    $3 u, v;",
+			"    cin >> u >> v;",
+			"    $1.at(u).push_back(v);",
+			"    $1.at(v).push_back(u);",
+			"}",
+			"$0",
+		],
+		"description": "input edge dari graph",
+	},
+	"input 2 var": {
+		"prefix": "2var",
+		"body": [
+			"${1:type} ${2:var1},${3:var2};",
+			"cin >> $2 >> $3;",
+			"$0"
+		],
+		"description": "input 2 variable",
+	},
+	"input 3 var": {
+		"prefix": "3var",
+		"body": [
+			"${1:type} ${2:var1}, ${3:var2}, ${4:var3};",
+			"cin >> $2 >> $3 >> $4;",
+			"$0"
+		],
+		"description": "input 2 variable",
+	}
+}
