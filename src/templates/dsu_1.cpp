@@ -30,12 +30,9 @@ int main() {
 void unite(int u, int v, vector<int> &parent) {
     int root_u = find_root(u, parent);
     int root_v = find_root(v, parent);
-    if (root_u == root_v) return;
-    if (root_u == u) {
-        parent[root_u] = root_v;
-    } else {
-        parent[root_v] = root_u;
-    }
+    if (root_u == root_v) return; // u dan v sudah di kelompok yang sama
+    // gabungkan root_u dan root_v
+    parent[root_v] = root_u; // root_v menjadi anak dari root_u
 }
 int find_root(int vertex, vector<int> &parent) {
     // root adalah vertex yang parentnya dirinya sendiri
