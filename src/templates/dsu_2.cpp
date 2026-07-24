@@ -4,7 +4,7 @@ using namespace std;
 vector<int> parent;
 vector<int> ranks;
 int find(int x) {
-    while (parent[x] != x) {
+    if (parent[x] != x) {
         parent[x] = find(parent[x]);
     }
     return parent[x];
